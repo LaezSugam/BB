@@ -1,0 +1,14 @@
+<h1>New Question</h1>
+<form (submit)="addQuestion()" #formData="ngForm">
+	<p>Question: <textarea cols="50" rows="10" name="question" required minlength="15" [(ngModel)]="newQuestion.question" #question="ngModel" placeholder="New question..."></textarea><span *ngIf="question.dirty"><span *ngIf="question.errors?.required">Question field is required.</span><span *ngIf="question.errors?.minlength">Question Length must be greater than 2 characters.</span></span></p>
+
+	<p>Correct Answer: <input type="text" name="correctAnswer" required [(ngModel)]="newQuestion.correctAnswer" #correctAnswer="ngModel" placeholder="Correct answer..."><span *ngIf="correctAnswer.dirty"><span *ngIf="correctAnswer.errors?.required">Correct Answer field is required.</span></span></p>
+
+	<p>Wrong Answer 1: <input type="text" name="wrongAnswer1" required [(ngModel)]="newQuestion.wrongAnswer1" #wrongAnswer1="ngModel" placeholder="Wrong answer..."><span *ngIf="wrongAnswer1.dirty"><span *ngIf="wrongAnswer1.errors?.required">Wrong Answer 1 field is required.</span></span></p>
+
+	<p>Wrong Answer 2: <input type="text" name="wrongAnswer2" required [(ngModel)]="newQuestion.wrongAnswer2" #wrongAnswer2="ngModel" placeholder="Wrong answer..."><span *ngIf="wrongAnswer2.dirty"><span *ngIf="wrongAnswer2.errors?.required">Wrong Answer 2 field is required.</span></span></p>
+
+	<a [routerLink]="['/']"><button type="button" name="cancel">Cancel</button></a>
+
+	<input type="submit" name="createQuestion" value="Add Question" [disabled]="!formData.form.valid">
+</form>

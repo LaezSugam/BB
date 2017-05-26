@@ -1,0 +1,23 @@
+
+<h2 *ngIf="bbService.lastGameScore">Thanks for playing, {{bbService.currentUser.name}}!  Your score is {{bbService.lastGameScore}}/3 ({{bbService.lastGameScorePercent}}%)</h2>
+
+<h3 *ngIf="bbService.successfullyAdded">Your question has been added!</h3>
+
+<div class="startBox">
+	<a [routerLink]="['/quiz']"><button type="button" name="play">Play!</button></a>
+
+<p>Would you like to play a game?</p>
+</div>
+
+<p>Search scores: <input type="text" name="searchText" [(ngModel)]="searchText"></p>
+
+
+<h2 *ngIf="!showScores">No scores yet!</h2>
+<table *ngIf="showScores">
+	<tr>
+		<th>Name</th><th>Score</th><th>Percentage</th>
+	</tr>
+	<tr *ngFor="let score of scores | filter:searchText">
+		<td>{{score.name}}</td><td>{{score.score}}/{{score.questions}}</td><td>{{score.percentage}}%</td>
+	</tr>
+</table>

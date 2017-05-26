@@ -1,0 +1,3 @@
+<p *ngIf="bbService.currentUser._id"><strong>Welcome {{ bbService.currentUser.name }}</strong> <a [routerLink]="['/']">Home</a> | <a [routerLink]="['/add_question']">Add a Question</a> <button type="button" name="logout" (click)="logout()">Logout</button> </p>
+
+<router-outlet></router-outlet>
